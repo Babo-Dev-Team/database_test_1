@@ -36,14 +36,18 @@ git pull
 # crear branca nova
 git branch <nom branca>
 
-# esborrar branca COMPTE!!!
+# esborrar branca local	COMPTE!!! perill d'esborrar feina personal no combinada en una altra branca
 git branch -d <nom branca>
+
+# esborrar branca local i remota COMPTE!!! perill d'esborrar feina de l'equip no combinada en una altra branca
+git branch -d <nom branca>
+git push origin :<nom branca>
 
 # canviar a una altra branca (per fer fetch, pull, commit...)
 git checkout <nom branca>
 
 
-# proposta per sincronitzar i actualitzar els repositoris quan volem afegir canvis (per a la branca actual):
+### proposta per sincronitzar i actualitzar els repositoris quan volem afegir canvis (per a la branca actual): ###
 
 git commit -a  		      		  (primer afegim els canvis que hem fet al repositori local)
 git fetch  				  (comprovem els canvis del servidor, és el moment de mirar si hi ha conflictes)
@@ -52,7 +56,8 @@ git pull 				  (importem els canvis del servidor i els combinem amb la versió l
 git push origin <branca>		  (acutalitzem el servidor a la nostra versió local que incoropora tots els canvis)
 
 
-# combinar una branca a la branca master (afegir a master els canvis de la branca)
+
+### combinar una branca -> a la branca master (afegir a master els canvis de la branca) ###
 
 git checkout <branca_1>
 git fetch / git pull origin <branca_1>  (primer ens assegurem que la branca 1 està al dia)
@@ -62,7 +67,26 @@ git merge <branca_1> 	                (si no hi ha conflictes, els canvis de bra
 					(git afegeix marcadors al fitxer per a que veiem els conflictes)
 					(alternativament: git mergetool (eina gràfica per a resolució de conflictes.
 							  cal tenir meld instal·lat (sudo apt install meld)))
+							  
+(bon moment per mirar si el programa compila, i arreglar lo necessari)
 
 git commit -a -m 'comentaris, exemple: merge branca_1 to master'
 git fetch / pull origin master	       	(comprovem que no hi ha canvis nous a origin/master (branca remota))
 git push origin master			(finalment, actualitzem la branca origin/master del servidor))
+
+
+
+### combinar canvis de la branca master -> a una branca experimental ###
+
+git checkout <master>
+git fetch / git pull origin <master>  (primer ens assegurem que la branca master està al dia)
+git checkout branca_1  	    		(tornem a la branca master)
+git merge master 	                (si no hi ha conflictes, els canvis de master s'afegeixen a branca_1)
+    	  	     			(si hi ha conflicte, l'haurem de resoldre editant els fitxers a mà amb l'editor)
+					(git afegeix marcadors al fitxer per a que veiem els conflictes)
+					(alternativament: git mergetool (eina gràfica per a resolució de conflictes.
+							  cal tenir meld instal·lat (sudo apt install meld)))
+
+git commit -a -m 'comentaris, exemple: merge master -> to branca_1'
+git fetch / pull origin branca_1       	(comprovem que no hi ha canvis nous a origin/branca_1 (branca remota))
+git push origin branca_1		(finalment, actualitzem la branca origin/branca_1 del servidor))

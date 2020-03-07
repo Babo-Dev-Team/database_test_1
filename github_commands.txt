@@ -28,7 +28,9 @@ exemple: git push origin master
 git fetch
 
 # descarregar i incoroporar a la versió local els canvis del servidor
-git pull
+git pull <nom server remot> <branca>
+
+exemple: git pull origin master
 
 # crear branca nova
 git branch <nom branca>

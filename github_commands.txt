@@ -53,7 +53,8 @@ git push origin <branca>		  (acutalitzem el servidor a la nostra versió local q
 # combinar una branca a la branca master (afegir a master els canvis de la branca)
 
 git checkout <branca_1>
-git fetch / git pull origin <branca_1>  (primer ens assegurem que la branca està al dia)
+git fetch / git pull origin <branca_1>  (primer ens assegurem que la branca 1 està al dia)
+git checkout master  	    		(tornem a la branca master)
 git merge <branca_1> master             (si no hi ha conflictes, els canvis de branca_1 s'afegeixen a master)
     	  	     			(si hi ha conflicte, l'haurem de resoldre editant els fitxers a mà amb l'editor)
 					(git afegeix marcadors al fitxer per a que veiem els conflictes)

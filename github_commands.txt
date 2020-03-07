@@ -41,5 +41,6 @@ git checkout <nom branca>
 
 git commit -a  		      		  (primer afegim els canvis que hem fet al repositori local)
 git fetch  				  (comprovem els canvis del servidor, és el moment de mirar si hi ha conflictes)
+git diff <branca> origin/<branca>         (podem observar les diferencies línia per línia)
 git pull 				  (importem els canvis del servidor i els combinem amb la versió local, creant un commit nou amb tots els canvis)
-git push origin <branca actual>		  (acutalitzem el servidor a la nostra versió local que incoropora tots els canvis)
+git push origin <branca>		  (acutalitzem el servidor a la nostra versió local que incoropora tots els canvis)

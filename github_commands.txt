@@ -90,3 +90,15 @@ git merge master 	                (si no hi ha conflictes, els canvis de master 
 git commit -a -m 'comentaris, exemple: merge master -> to branca_1'
 git fetch / pull origin branca_1       	(comprovem que no hi ha canvis nous a origin/branca_1 (branca remota))
 git push origin branca_1		(finalment, actualitzem la branca origin/branca_1 del servidor))
+
+
+
+
+### Enllaços d'interès:
+
+# Per què fem commit i després pull i no a la inversa
+https://community.atlassian.com/t5/Bitbucket-questions/Did-a-commit-before-I-did-a-pull/qaq-p/352525
+
+# Git: Basic Branching
+https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging
+

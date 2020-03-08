@@ -29,7 +29,16 @@ int main(int argc, char **argv)
 	  exit (1);
   }
   
-  strcpy(query, "SELECT * FROM jugadors");
+  char name[32];
+  
+  printf("Type the player's name:");
+  scanf("%s", name);
+  
+  strcpy(query, "SELECT SUM(TIMESTAMPDIFF(SECOND, partides.dataInici, partides.dataFinal)) FROM jugadors,participants,partides WHERE ");
+  strcat(query, "jugadors.nom = '");
+  strcat(query, name);
+  strcat(query, "' AND jugadors.id = participants.idJugador ");
+  strcat(query, "AND participants.idPartida = partides.id");
   
   err = mysql_query(conn, query);
   if (err != 0)
@@ -40,16 +49,16 @@ int main(int argc, char **argv)
   result = mysql_store_result(conn);
 
   row = mysql_fetch_row(result);
-  if (row == NULL)
+  if (row == NULL || row[0] == NULL)
     {
       printf("Query result contains no data\n");
     }
-  else
-    {
-		while (row != NULL)
-		{
-			printf("%s\t%s\t%s\n", row[0], row[1], row[2]);
-			row = mysql_fetch_row(result);
-		}
-    }
+ else
+	{
+	  int raw_time = atoi(row[0]);
+	  int seconds = raw_time % 60;
+	  int minutes = ((raw_time - seconds) / 60) % 60;
+	  int hours = ((raw_time - seconds - (minutes * 60)) / 3600) % 24;
+	  printf("Total time played by %s: %d:%d:%d\n", name, hours, minutes, seconds);
+	}
 }

@@ -14,7 +14,7 @@ create table partides (
 id integer,
 dataInici datetime,
 dataFinal datetime,
-duració integer,
+duracio integer,
 idGuanyador integer,
 primary key (id)	
 )ENGINE=InnoDB;
@@ -33,10 +33,10 @@ insert into jugadors values (2, 'Maria', 'admin');
 insert into jugadors values (3, 'Joan', 'Joan');
 insert into jugadors values (4, 'Laia', 'Bcn92');
 
-insert into partides values (1, '2020-01-03 10:02:32', '2020-01-03 10:32:42', 186000, 4);
-insert into partides values (2, '2020-01-04 12:42:32', '2020-01-04 13:03:34', 306200, 4);
-insert into partides values (3, '2020-01-05 23:34:46', '2020-01-05 23:55:02', 121600, 4);
-insert into partides values (4, '2020-01-06 21:34:46', '2020-01-06 22:12:03', 223700, 2);
+insert into partides values (1, '2020-01-03 10:02:32', '2020-01-03 10:32:42', 1860, 4);
+insert into partides values (2, '2020-01-04 12:42:32', '2020-01-04 13:03:34', 3062, 4);
+insert into partides values (3, '2020-01-05 23:34:46', '2020-01-05 23:55:02', 1216, 4);
+insert into partides values (4, '2020-01-06 21:34:46', '2020-01-06 22:12:03', 2237, 2);
 
 insert into participants values (1, 1, 'Babo_1', 1000);
 insert into participants values (3, 1, 'Babo_1', 2000);

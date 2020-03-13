@@ -35,7 +35,8 @@ int main(int argc, char **argv)
   scanf("%s", name);
 
   // SQL Query
-  strcpy(query, "SELECT SUM(TIMESTAMPDIFF(SECOND, partides.dataInici, partides.dataFinal)) FROM jugadors,participants,partides WHERE ");
+  //strcpy(query, "SELECT SUM(TIMESTAMPDIFF(SECOND, partides.dataInici, partides.dataFinal)) FROM jugadors,participants,partides WHERE ");
+  strcpy(query, "SELECT SUM(partides.duracio) FROM jugadors,participants,partides WHERE ");
   strcat(query, "jugadors.nom = '");
   strcat(query, name);
   strcat(query, "' AND jugadors.id = participants.idJugador ");

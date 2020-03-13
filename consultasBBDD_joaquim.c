@@ -33,28 +33,35 @@ int main(int argc, char **argv)
   
   printf("Type the player's name:");
   scanf("%s", name);
-  
+
+  // SQL Query
   strcpy(query, "SELECT SUM(TIMESTAMPDIFF(SECOND, partides.dataInici, partides.dataFinal)) FROM jugadors,participants,partides WHERE ");
   strcat(query, "jugadors.nom = '");
   strcat(query, name);
   strcat(query, "' AND jugadors.id = participants.idJugador ");
   strcat(query, "AND participants.idPartida = partides.id");
-  
+
+  // send query
   err = mysql_query(conn, query);
   if (err != 0)
     {
       printf ("Query Error:  %u %s\n", mysql_errno(conn), mysql_error(conn));
       exit (1);
     }
-  result = mysql_store_result(conn);
 
+  // store query result
+  result = mysql_store_result(conn);
   row = mysql_fetch_row(result);
+  
+  // the SUM function returns NULL if no values are added.
+  // In this case, row[0] will be null
   if (row == NULL || row[0] == NULL)
     {
       printf("Query result contains no data\n");
     }
  else
 	{
+	  // Convert time in seconds to HH:MM:SS format
 	  int raw_time = atoi(row[0]);
 	  int seconds = raw_time % 60;
 	  int minutes = ((raw_time - seconds) / 60) % 60;
